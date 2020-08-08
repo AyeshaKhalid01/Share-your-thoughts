@@ -9,3 +9,5 @@ Created Django, Anaconda, JavaScript and HTML
 ### Running 
 - Run locally with ```python manage.py runserver localhost:8000 ```
 - Run on mac1xa3.ca server with ```python manage.py runserver localhost:10055```
+- Access the website by going to [https://mac1xa3.ca/e/khalia34](https://mac1xa3.ca/e/khalia34) **make sure the conda enviroment is activated**
+
