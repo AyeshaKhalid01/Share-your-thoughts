@@ -22,3 +22,19 @@ class UserInfo(models.Model):
     birthday = models.DateField(null=True,blank=True)
     interests = models.ManyToManyField(Interest)
     friends = models.ManyToManyField('self')
+    
+class Post(models.Model):
+    owner = models.ForeignKey(UserInfo,
+                              on_delete=models.CASCADE)
+    content = models.CharField(max_length=280)
+    timestamp = models.DateTimeField(auto_now=True)
+    likes = models.ManyToManyField(UserInfo,
+                                   related_name='likes')
+
+class FriendRequest(models.Model):
+    to_user = models.ForeignKey(UserInfo,
+                                on_delete=models.CASCADE,
+                                related_name='to_users')
+    from_user = models.ForeignKey(UserInfo,
+                                  on_delete=models.CASCADE,
+                                  related_name='from_users')
