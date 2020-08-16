@@ -14,3 +14,14 @@ Created Django, Anaconda, JavaScript and HTML
 ## Objective 01 
 **Description:** The purpose of this is to build signup form for new users to create an account. This done by editing the function signup_view in Project03/login/views.py to render the signup form. 
 
+- The code below checks if the form is valid, if True it will create a UserInfo object and store the username and password.
+```Python
+ if form.is_valid():
+          username = form.cleaned_data.get('username')
+          password = form.cleaned_data.get('password1')
+          models.UserInfo.objects.create_user_info(username=username,password=password)
+```
+Project03/login/templates/signup.djhtml is also edited to display the form. If an account is successfully created the user will be taken to the messages page.
+
+**Exception:** If the form is called without valid arguments it redirects to login.djhtml.
+
