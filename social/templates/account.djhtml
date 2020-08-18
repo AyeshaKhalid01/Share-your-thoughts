@@ -1,0 +1,72 @@
+  
+{% extends 'social_base.djhtml' %}
+
+{% block title %}Account Page{% endblock %}
+
+{% block middle_column %}
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+                <div class="w3-container w3-padding">
+                    <!-- <h6 class="w3-opacity">Change Password</h6>  -->
+                    <!--                     TODO Objective 3: Add Password Change Form -->
+                    <form method="post" id="form" action="{% url 'social:account_view' %}">
+                       {% csrf_token %}
+                       {{ form }}
+                       <input name="account_form" type="submit" value="Submit" />
+                    </form>
+                    {% if account_failed %}
+                       <p style="color:red"> Unable to change password </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+                <div class="w3-container w3-padding">
+                    <h6 class="w3-opacity">Update Info</h6>
+                    <!--                     TODO Objective 3: Add User Info Update Forms -->
+                    <br>
+                   <form method="post" action="{% url 'social:account_view'  %}">
+                        {% csrf_token %}
+                        Employment:<br>
+                        <input  type='text' name='employment' placeholder='Enter employment' value ={{employment}} > <br>
+                        <input type="submit" value="Save" />
+                    </form>
+                    <br>
+                    <form method="post" action="{% url 'social:account_view'  %}">
+                        {% csrf_token %}
+                        Location:<br>
+                        <input  type='text' name='location' placeholder='Enter location' value ={{location}} ><br>
+                        <input type="submit" value="Save" />
+                    </form>
+                    <br>
+                    <form method="post" action="{% url 'social:account_view'  %}">
+                        {% csrf_token %}
+                        Birthday:<br>
+                        <input  type='date' name='birthday' placeholder='DOB' value ={{birthday}} /><br>
+                        <input type="submit" value="Save" />
+                    </form>
+                    <br>
+
+                    <form method="post" name="interestForm" action="{% url 'social:account_view'  %}">
+                        {% csrf_token %}
+                        Interests:<br>
+                        <input  type='text' name='interest' placeholder='Enter Interests' value ={{interests}} ><br>
+                        <input type="submit" value="Save" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!--
+{% block script %}
+<script>
+$.ajaxSetup({
+     headers: {"X-CSRFToken" : '{{ csrf_token}}' }
+</script>
+{% endblock %}
+-->
