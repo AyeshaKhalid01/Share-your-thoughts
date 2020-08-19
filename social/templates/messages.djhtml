@@ -39,3 +39,31 @@
           <p><button id="more-button" class="w3-button w3-block w3-theme-l4">More</button></p>
       </div>
 {% endblock %}
+
+{% block right_column %}
+    {% for i in user_info.friends.all %}
+    <!-- TODO Objective 7: use user_info object to render friends -->
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Friend</p>
+          {% load static %}
+          <img src="{% static 'avatar.png'  %}" alt="Avatar" style="width:50%"><br>
+          <span>{{i.user}}</span>
+        </div>
+      </div>
+      <br>
+    {% endfor %}
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+    <script>
+     $.ajaxSetup({
+         headers: { "X-CSRFToken": '{{csrf_token}}' }
+     });
+     like_post_url = "{% url 'social:like_view' %}";
+     post_submit_url = "{% url 'social:post_submit_view' %}";
+     more_post_url = "{% url 'social:more_post_view' %}";
+    </script>
+    <script src="{% static 'messages.js' %}"></script>
+{% endblock %}
