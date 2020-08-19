@@ -1,1 +1,41 @@
+{% extends 'social_base.djhtml' %}
 
+{% block title %}Personal Page{% endblock %}
+
+{% block middle_column %}
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Share Your Stupid Thoughts!</h6>
+              <p id="post-text" contenteditable="true" class="w3-border w3-padding">Status: Feeling Like A Sentient Rock</p>
+              <button type="button" id="post-button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODO Objective 9: Display Posts using posts list -->
+      {% for i in posts %}
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            {% load static %}
+            <img src="{% static 'avatar.png'  %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span class="w3-right w3-opacity">{{i.timestamp}}</span>
+            <h4 class="post-user">{{i.owner.user.username}}</h4><br>
+            <p id="content" contenteditable="false" >{{i.content}}</p>
+            <!-- TODO Objective 10: Add Post id and likes count -->
+            {% if i in likePosts %}
+                    <button type="button" disabled class="w3-button w3-theme-d1 w3-margin-bottom like-button" id="post-{{ forloop.counter0 }}">
+                        <i class="fa fa-thumbs-up"></i>  Like</button>
+                   <span class="w3-button w3-theme-d1 w3-margin-bottom">{{i.likes.count}} Likes</span>
+            {% else %}
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom like-button" id="post-{{ forloop.counter0 }}">
+                        <i class="fa fa-thumbs-up"></i> Like</button>
+            <span class="w3-button w3-theme-d1 w3-margin-bottom">{{i.likes.count}} Likes</span>
+            {% endif %}
+        </div>
+      {% endfor %}
+      <div class="w3-container">
+          <p><button id="more-button" class="w3-button w3-block w3-theme-l4">More</button></p>
+      </div>
+{% endblock %}
