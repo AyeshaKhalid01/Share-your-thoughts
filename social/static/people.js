@@ -51,3 +51,36 @@ function submitMorePpl(event) {
            json_data,
            morePplResponse);
 }
+
+/* ********************************************************************************************
+   | Handle Accepting/Declining Friend Requests -
+   |                           called by $('.acceptdecline-button').click(acceptDeclineRequest)
+   ********************************************************************************************
+   */
+
+function acceptDeclineRequest(event) {
+    // TODO Objective 6: perform AJAX POST to accept or decline Friend Request
+    let decision = this.id;
+    //let x= document.getElementsByName("Decline");
+    let json_data = { 'decision' : decision };
+    // globally defined in messages.djhtml using i{% url 'social:like_view' %}
+    let url_path = accept_decline_url;
+
+    // AJAX post
+    $.post(url_path,
+           json_data,
+           frResponse);
+}
+
+/* ********************************************************************************************
+   | Document Ready (Only Execute After Document Has Been Loaded)
+   ********************************************************************************************
+   */
+$(document).ready(function() {
+    // handle requesting more ppl
+    $('#more-ppl-button').click(submitMorePpl);
+    // handle for creating a friend request
+    $('.fr-button').click(friendRequest);
+    // handle for accepting/declining a friend request
+    $('.acceptdecline-button').click(acceptDeclineRequest);
+});
