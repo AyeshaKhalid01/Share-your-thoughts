@@ -39,3 +39,15 @@ function morePplResponse(data,status) {
         alert('failed to request more ppl' + status);
     }
 }
+
+function submitMorePpl(event) {
+    // submit empty data
+    let json_data = { };
+    // globally defined in messages.djhtml using i{% url 'social:more_post_view' %}
+    let url_path = more_ppl_url;
+
+    // AJAX post
+    $.post(url_path,
+           json_data,
+           morePplResponse);
+}
