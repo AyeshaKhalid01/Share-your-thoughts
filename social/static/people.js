@@ -25,3 +25,17 @@ function friendRequest(event) {
            json_data,
            frResponse);
 }
+
+/* ********************************************************************************************
+   | Handle Requesting More People - called by $('#more-ppl-button').click(submitMorePpl)
+   ********************************************************************************************
+   */
+function morePplResponse(data,status) {
+    if (status == 'success') {
+        // reload page to display new Post
+        location.reload();
+    }
+    else {
+        alert('failed to request more ppl' + status);
+    }
+}
