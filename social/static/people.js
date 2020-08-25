@@ -11,3 +11,17 @@ function frResponse(data,status) {
         alert('failed to create friend request ' + status);
     }
 }
+
+function friendRequest(event) {
+    // the id of the current button, should be fr-name where name is valid username
+//    this.disabled = true
+    let frID = event.target.id;
+    //document.getElementById(buttonid).disabled = true;
+    let json_data = { 'frID' : frID };
+    // globally defined in messages.djhtml using i{% url 'social:like_view' %}
+    let url_path = friend_request_url;
+    // AJAX post
+    $.post(url_path,
+           json_data,
+           frResponse);
+}
