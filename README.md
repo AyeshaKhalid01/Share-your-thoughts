@@ -30,3 +30,15 @@ Project03/login/templates/signup.djhtml is also edited to display the form. If a
 
 **Exception:** If the user has not added information then employment and location will be "Unspecified". Birthday will be "None" and the interest section will be blank.
 
+## Objective 03
+**Description:** This feature is used to update the information for the user or the user's password. Account_view function in Project03/social/views.py is edited to render the forms and Project03/social/templates/account.djhtml is used to display the form.
+
+- After changing the password the user will be **directed to the login page** to log in with the new password. 
+
+- The user can update their personal information aswell the user must press save after updating the information.
+
+- **The user must press save for the current attribute they are editing before updating other attributes**. 
+
+- All changes can be seen in the left hand column where the users current information is displayed, the page is reloaded after updating the information. 
+
+- The interests of the user are added to the interest model and displayed as a label on the left column of the web page. The code below shows how the interest is saved and added to the UserInfo object.
