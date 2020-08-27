@@ -42,3 +42,12 @@ Project03/login/templates/signup.djhtml is also edited to display the form. If a
 - All changes can be seen in the left hand column where the users current information is displayed, the page is reloaded after updating the information. 
 
 - The interests of the user are added to the interest model and displayed as a label on the left column of the web page. The code below shows how the interest is saved and added to the UserInfo object.
+
+```Python
+if newInterest:
+     userInterest = models.Interest(label=newInterest)
+     userInterest.save()
+     user_info.interests.add(userInterest)               
+     user_info.save()
+```
+**Exception:** If the password change form is not filled in correctly i.e if it lacks arguments or the wrong arguments are given, the page will reload and the user will get another chance to fill out the form again. 
