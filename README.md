@@ -50,4 +50,4 @@ if newInterest:
      user_info.interests.add(userInterest)               
      user_info.save()
 ```
-**Exception:** If the password change form is not filled in correctly i.e if it lacks arguments or the wrong arguments are given, the page will reload and the user will get another chance to fill out the form again. 
+**Exception:** If the password change form is not filled in correctly i.e. if it lacks arguments or the wrong arguments are given, the page will reload and the user will get another chance to fill out the form again. 
