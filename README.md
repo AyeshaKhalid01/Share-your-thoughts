@@ -23,7 +23,7 @@ Created Django, Anaconda, JavaScript and HTML
 ```
 Project03/login/templates/signup.djhtml is also edited to display the form. If an account is successfully created the user will be taken to the messages page.
 
-**Exception:** If the form is called without valid arguments it redirects to login.djhtml.
+**Exception: ** If the form is called without valid arguments it redirects to login.djhtml.
 
 ## Objective 02
 **Description:** This objective displays the users information  on the left side of the web page.  Project03/social/templates/social_base.djhtml is edited to display the user's data using attributes from the UserInfo class such as employment, location, birthday and interests.
